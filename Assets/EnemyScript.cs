@@ -17,6 +17,8 @@ public class EnemyScript : MonoBehaviour
     public float Hp;
     public int TakeDmg;
 
+    public GameObject XPball;
+
 
     void Start()
     {
@@ -51,4 +53,16 @@ public class EnemyScript : MonoBehaviour
         }
 
     }
+
+    public void DropXP()
+    {
+        Instantiate(XPball, transform.position,Quaternion.identity);
+    }
+
+    private void OnDestroy()
+    {
+        DropXP();
+    }
+
+
 }

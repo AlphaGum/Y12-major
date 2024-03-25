@@ -107,6 +107,7 @@ MonoBehaviour:
   MoveSpeed: 3
   Hp: 200
   TakeDmg: 0
+  XPball: {fileID: 161302803933883976, guid: c8daf23d08a5f964ca88012d28d57ec6, type: 3}
 --- !u!61 &470076677454384013
 BoxCollider2D:
   m_ObjectHideFlags: 0

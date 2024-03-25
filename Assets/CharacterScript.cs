@@ -33,6 +33,16 @@ public class CharacterScript : MonoBehaviour
 
     public float Damage;
 
+    //class options
+    public GameObject ClassName;
+    public GameObject WeaponS1;
+    public GameObject WeaponS2;
+    public GameObject Buff1;
+    public GameObject Buff2;
+
+
+
+
 
 
 
@@ -159,6 +169,12 @@ public class CharacterScript : MonoBehaviour
         }
         return solveforRequiredXp / 4;
     }
+
+    // create multiple options of about 5 classes to choosse from,
+    // each class have its own main weapon which continously attacks and a activated abilty, that has a cooldown
+    // each class has 2 buff abiltys that realate to the weapon and abilty, each weapon and abilty has 5 upgrades each and you get to choose one upgrade each time you level up
+    // when your weapon and corrosponding abilty both become max level you can choose to fuse them craeting a much stronger weapon
+
 
     
 }

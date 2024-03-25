@@ -2039,6 +2039,11 @@ MonoBehaviour:
   DivisionMultiplyer: 15
   XpSlider: {fileID: 1362918072}
   Damage: 50
+  ClassName: {fileID: 0}
+  WeaponS1: {fileID: 0}
+  WeaponS2: {fileID: 0}
+  Buff1: {fileID: 0}
+  Buff2: {fileID: 0}
 --- !u!50 &1087713554
 Rigidbody2D:
   serializedVersion: 4
@@ -2129,7 +2134,7 @@ Transform:
   m_GameObject: {fileID: 1087713552}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.07, y: -0.3, z: 0}
+  m_LocalPosition: {x: -9.53, y: -0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
