@@ -34,7 +34,7 @@ public class CharacterScript : MonoBehaviour
     public float Damage;
 
     //class options
-    public GameObject ClassName;
+    public string ClassName;
     public GameObject WeaponS1;
     public GameObject WeaponS2;
     public GameObject Buff1;
@@ -169,6 +169,8 @@ public class CharacterScript : MonoBehaviour
         }
         return solveforRequiredXp / 4;
     }
+
+
 
     // create multiple options of about 5 classes to choosse from,
     // each class have its own main weapon which continously attacks and a activated abilty, that has a cooldown
