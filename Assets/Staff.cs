@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Staff : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float speed = 1.0f;
 
-    // Update is called once per frame
-    private void Update()
+    public Projectile Projectile;
+    public Transform LaunchOffset;
+    // Start is called before the first frame update
+    void Start()
     {
-        transform.position += transform.right * Time.deltaTime * speed;
+        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    // Update is called once per frame
+    void Update()
     {
-        Destroy(gameObject);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(Projectile, LaunchOffset.position, transform.rotation);
+        }
     }
 }

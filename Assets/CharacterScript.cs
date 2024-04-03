@@ -40,9 +40,7 @@ public class CharacterScript : MonoBehaviour
     public GameObject Buff1;
     public GameObject Buff2;
 
-
-
-
+    
 
 
 
@@ -86,6 +84,8 @@ public class CharacterScript : MonoBehaviour
         {
             LevelUp();
         }
+
+        
 
     }
 
