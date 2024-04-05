@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
     public int TakeDmg;
 
     public GameObject XPball;
+    public Transform Enemy;
 
 
     void Start()
