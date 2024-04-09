@@ -5,33 +5,32 @@ using System.Linq;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class Staff : MonoBehaviour
 {
 
-    public Projectile Projectile;
+    public GameObject Projectile;
     public Transform LaunchOffset;
+    public GameObject Enemy;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("AutoShoot",1,2);
+        InvokeRepeating("AutoShoot",1,1);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(Projectile, LaunchOffset.position, transform.rotation);
-        }
+       
     }
 
     void AutoShoot()
     {
         
         List<float> Distances = new List<float>();
-        Collider2D[] hits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 5f, 8);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 11f, 8);
 
         foreach (Collider2D hit in hits)
         {
@@ -40,14 +39,22 @@ public class Staff : MonoBehaviour
         float min = Distances.Min();
         print(hits[Distances.IndexOf(min)]);
 
-        Vector3 ShootLocation = LaunchOffset.position - transform.position;
-        Instantiate(Projectile, LaunchOffset.position,);
+        Collider2D Target = (hits[Distances.IndexOf(min)]);
+
+        GameObject Bullet = Instantiate(Projectile, LaunchOffset.position, Quaternion.identity);
+
+        Vector3 MoveDirection = Target.gameObject.transform.position - transform.position;
+        MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
+        MoveDirection = Vector3.Normalize(MoveDirection);
+
+        Bullet.GetComponent<Projectile>().Direction = MoveDirection;
+        
 
 
+    }
 
-        // Calculating the rotation of the enemy from the player
-
-        //Instantiate(Projectile, LaunchOffset.position, transform.rotation);
+    void MeteorSpell()
+    {
 
     }
 }

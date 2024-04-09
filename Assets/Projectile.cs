@@ -9,11 +9,13 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     public float speed = 1.0f;
     public float Damage;
+
+    public Vector3 Direction;
     // Update is called once per frame
     private void Update()
     {
 
-        transform.position += transform.right * Time.deltaTime * speed;
+        transform.position += Direction * Time.deltaTime * speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

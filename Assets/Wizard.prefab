@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4504277272517652159}
   - component: {fileID: 2486469627708985343}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Staff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c25db976dfbba4ab495e8633a65a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  Damage: 0
+  Direction: {x: 0, y: 0, z: 0}
 --- !u!1 &1218122637112428084
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +60,7 @@ GameObject:
   - component: {fileID: 4875310475695473444}
   - component: {fileID: 4048795042003907157}
   - component: {fileID: 2307693814758894731}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wizard
   m_TagString: Player
   m_Icon: {fileID: 0}
