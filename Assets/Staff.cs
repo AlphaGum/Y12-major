@@ -55,6 +55,6 @@ public class Staff : MonoBehaviour
 
     void MeteorSpell()
     {
-
+        OnMouseDown(Instantiate(Projectile));
     }
 }
