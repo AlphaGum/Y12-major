@@ -29,11 +29,13 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        Vector3 MoveDirection = PlayerLocation.position - transform.position;
-        MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
-        MoveDirection = Vector3.Normalize(MoveDirection);
-        
-        transform.Translate(MoveDirection * MoveSpeed * Time.deltaTime);
+        if(PlayerLocation != null)
+        {
+            Vector3 MoveDirection = PlayerLocation.position - transform.position;
+            MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
+            MoveDirection = Vector3.Normalize(MoveDirection);
+            transform.Translate(MoveDirection * MoveSpeed * Time.deltaTime);
+        }
     }
 
 

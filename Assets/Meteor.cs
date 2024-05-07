@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Meteor : MonoBehaviour
 {
-
-
-    // Start is called before the first frame update
     public float speed = 1.0f;
     public float Damage;
 
+    public GameObject Explosion;
+    public GameObject Temp;
     public Vector3 Direction;
-    // Update is called once per frame
-    private void Update()
+    // Start is called before the first frame update
+    void Start()
     {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         transform.position += Direction * Time.deltaTime * speed;
     }
 
@@ -22,12 +26,15 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag == "Enemy")
         {
-            
+            print("damage");
             EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
             enemyScript.TakeDamage(Damage);
+
+            GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
+            print("explosion");
             Destroy(gameObject);
         }
-        
+
 
     }
     
