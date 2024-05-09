@@ -26,7 +26,8 @@ public class Meteor : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag == "Enemy")
         {
-            print("damage");
+            print($"{Damage} Meteor");
+
             EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
             enemyScript.TakeDamage(Damage);
 

@@ -12,21 +12,23 @@ public class explosion : MonoBehaviour
     {
         // Get all colliders within the explosion radius
         Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.z), radius);
-        print(colliders.Length);
+        Gizmos.DrawWireSphere(transform.position, radius);
+        
 
         // Apply damage to all objects within the explosion radius
         foreach (Collider2D hit in colliders)
         {
             print("better expolsion: " + hit.name);
-            if(hit.gameObject.tag == "Enemy")
+            if (hit.gameObject.tag == "Enemy")
             {
+                print("better expolsion part 2: " + hit.name);
+                print($"{Damage} explosion");
                 EnemyScript enemyScript = hit.gameObject.GetComponent<EnemyScript>();
                 enemyScript.TakeDamage(Damage);
             }
             
             
-            // Here you would access the health system of your game objects
-            // and apply damage. This will depend on how you've structured your game.
+           
         }
 
         // Destroy the explosion after applying damage
