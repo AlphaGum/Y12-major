@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -40,6 +41,8 @@ public class CharacterScript : MonoBehaviour
     public GameObject Buff1;
     public GameObject Buff2;
 
+    public TextMeshProUGUI LevelText;
+
     
 
 
@@ -63,6 +66,8 @@ public class CharacterScript : MonoBehaviour
 
         Vector3 StartVector = new Vector3(0,1,1);
         healthSlider.transform.localScale = StartVector;
+
+        DisplayLevel();
 
     }
 
@@ -157,8 +162,8 @@ public class CharacterScript : MonoBehaviour
         currentXP = Mathf.RoundToInt(currentXP - RequiredXP);
         RequiredXP = CalculateRequiredXp();
         heal(100);
-       
-       
+
+        DisplayLevel();
     }
     private int CalculateRequiredXp()
     {
@@ -168,6 +173,11 @@ public class CharacterScript : MonoBehaviour
             solveforRequiredXp += (int)Mathf.Floor(LevelCycle + AdditionMultiplyer * Mathf.Pow(PowerMultiplyer, LevelCycle / DivisionMultiplyer));
         }
         return solveforRequiredXp / 4;
+    }
+
+    public void DisplayLevel()
+    {
+        LevelText.text = level.ToString();
     }
 
 

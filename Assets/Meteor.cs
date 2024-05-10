@@ -26,13 +26,13 @@ public class Meteor : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag == "Enemy")
         {
-            print($"{Damage} Meteor");
+            
 
             EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
             enemyScript.TakeDamage(Damage);
 
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
-            print("explosion");
+            
             Destroy(gameObject);
         }
 
