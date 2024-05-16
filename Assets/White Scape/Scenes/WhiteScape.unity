@@ -2150,9 +2150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee0042ffc1e114da57c5daba23ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 6230864538115418363, guid: ee9886e24efae79428c7e7d17a292bb4, type: 3}
+  EnemyPrefab1: {fileID: 6230864538115418363, guid: ee9886e24efae79428c7e7d17a292bb4, type: 3}
   MinimumSpawnTime: 2
   MaximumSpawnTime: 5
+  waveCounter: 0
+  Tier: 0
+  WaveDelay: 0
+  EnemyTier: 0
 --- !u!4 &1371589958
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,9 +2310,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee0042ffc1e114da57c5daba23ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 6230864538115418363, guid: 1aada7c85e5b993439693f49ad14e63f, type: 3}
+  EnemyPrefab1: {fileID: 6230864538115418363, guid: 1aada7c85e5b993439693f49ad14e63f, type: 3}
   MinimumSpawnTime: 2
   MaximumSpawnTime: 5
+  waveCounter: 0
+  Tier: 0
+  WaveDelay: 0
+  EnemyTier: 0
 --- !u!4 &1397625571
 Transform:
   m_ObjectHideFlags: 0
@@ -2642,9 +2650,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee0042ffc1e114da57c5daba23ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 6230864538115418363, guid: 41becff045b289f428f804c93b3f8cf1, type: 3}
+  EnemyPrefab1: {fileID: 6230864538115418363, guid: 41becff045b289f428f804c93b3f8cf1, type: 3}
   MinimumSpawnTime: 2
   MaximumSpawnTime: 5
+  waveCounter: 0
+  Tier: 0
+  WaveDelay: 0
+  EnemyTier: 0
 --- !u!4 &1580653476
 Transform:
   m_ObjectHideFlags: 0
@@ -2894,9 +2906,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee0042ffc1e114da57c5daba23ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 6230864538115418363, guid: d9779c5e748fc27488bf42766b7096fd, type: 3}
+  EnemyPrefab1: {fileID: 6230864538115418363, guid: d9779c5e748fc27488bf42766b7096fd, type: 3}
   MinimumSpawnTime: 2
   MaximumSpawnTime: 5
+  waveCounter: 0
+  Tier: 0
+  WaveDelay: 0
+  EnemyTier: 0
 --- !u!4 &1967936479
 Transform:
   m_ObjectHideFlags: 0
@@ -3027,9 +3043,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee0042ffc1e114da57c5daba23ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 6230864538115418363, guid: 0c701ff312feb4e448ca5e0efdfff74e, type: 3}
+  EnemyPrefab1: {fileID: 6230864538115418363, guid: 0c701ff312feb4e448ca5e0efdfff74e, type: 3}
   MinimumSpawnTime: 2
   MaximumSpawnTime: 5
+  waveCounter: 0
+  Tier: 0
+  WaveDelay: 0
+  EnemyTier: 0
 --- !u!4 &2126921586
 Transform:
   m_ObjectHideFlags: 0
