@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject EnemyPrefab1;
-    private GameObject EnemyPrefab2;
-    private GameObject EnemyPrefab3;
-    private GameObject EnemyPrefab4;
-    private GameObject EnemyPrefab5;
+    private List<GameObject> EnemyPrefabList;
+    public List<GameObject> SpawnPoint;
+
+
+
 
 
     [SerializeField]
@@ -23,33 +23,24 @@ public class EnemySpawner : MonoBehaviour
     public int waveCounter;
     public int Tier;
     public float WaveDelay;
+    public int spawnQuantity = 10;
 
     public int EnemyTier;
 
 
     void Start()
     {
-        //SetTimeUntillSpawn();
+        
         InvokeRepeating("NextWave",1,2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        TimeUntillSpawn -= Time.deltaTime;
-
-        if (TimeUntillSpawn <= 0)
-        {
-            //Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
-            //SetTimeUntillSpawn();
-        }
+        
     }
 
-    private void SetTimeUntillSpawn()
-    {
-        //TimeUntillSpawn = Random.Range(MinimumSpawnTime, MaximumSpawnTime);
-        //TimeUntillSpawn = 4;
-    }
+  
 
     private void NextWave()
     {
@@ -57,37 +48,30 @@ public class EnemySpawner : MonoBehaviour
         print("waveCounter" + waveCounter);
 
         int tier = waveCounter / 5;
-        print("teir " + tier);
-        //Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
 
-        if (tier == 0)
+        System.Random rnd = new System.Random();
+
+
+
+        for (int i = 0; i < spawnQuantity; i++)
         {
-            Instantiate(EnemyPrefab1, transform.position, Quaternion.identity);
+            float x = rnd.Next(0,5);
+            float y = rnd.Next(0,5);
+            Vector3 randVector = new Vector3(x, y, 0);
+
+            Instantiate(EnemyPrefabList[tier].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+
         }
-        else if (tier == 1)
-        {
-            Instantiate(EnemyPrefab2, transform.position, Quaternion.identity);
-        }
-        else if (tier == 2)
-        {
-            Instantiate(EnemyPrefab3, transform.position, Quaternion.identity);
-        }
-        else if (tier == 3)
-        {
-            Instantiate(EnemyPrefab4, transform.position, Quaternion.identity);
-        }
-        else if (tier == 4)
-        {
-            Instantiate(EnemyPrefab5, transform.position, Quaternion.identity);
-        }
+        spawnQuantity += 2;
+
         
-
-
-
-
-
+        
+       
+      
 
     }
+
+    
 
 
 }
