@@ -67,7 +67,7 @@ public class Staff : MonoBehaviour
             mousePosition.z = 0; 
 
             // Instantiate the prefab at the mouse position
-             GameObject meteor = Instantiate(Bomb, new Vector3(transform.position.x,8,0), Quaternion.identity);
+             GameObject meteor = Instantiate(Bomb, new Vector3(transform.position.x,transform.position.y+8,0), Quaternion.identity);
 
             Vector3 MoveDirection = mousePosition - meteor.transform.position;
             MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);

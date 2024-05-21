@@ -14,17 +14,17 @@ public class explosion : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius);
 
         // Gizmos.DrawWireSphere(transform.position, radius);
-        print("Hits:" + colliders.Length);
+        //print("Hits:" + colliders.Length);
         
 
         // Apply damage to all objects within the explosion radius
         foreach (Collider2D hit in colliders)
         {
-            print("better expolsion: " + hit.name);
+            //print("better expolsion: " + hit.name);
             if (hit.gameObject.tag == "Enemy")
             {
-                print("better expolsion part 2: " + hit.name);
-                print($"{Damage} explosion");
+                //print("better expolsion part 2: " + hit.name);
+                //print($"{Damage} explosion");
                 EnemyScript enemyScript = hit.gameObject.GetComponent<EnemyScript>();
                 enemyScript.TakeDamage(Damage);
             }

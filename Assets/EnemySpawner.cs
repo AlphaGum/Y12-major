@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         
-        InvokeRepeating("NextWave",1,2);
+        InvokeRepeating("NextWave",1,15);
     }
 
     // Update is called once per frame
@@ -59,7 +59,31 @@ public class EnemySpawner : MonoBehaviour
             float y = rnd.Next(0,5);
             Vector3 randVector = new Vector3(x, y, 0);
 
-            Instantiate(EnemyPrefabList[tier].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            Instantiate(EnemyPrefabList[0].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            print("spawnQuantity" + spawnQuantity);
+
+            if (i >= 20)
+            {
+                print("Wave: " + waveCounter + " - Spawning tier 2 enemy");
+                Instantiate(EnemyPrefabList[1].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
+            if (i >= 30)
+            {
+                print("Wave: " + waveCounter + " - Spawning tier 3 enemy");
+                Instantiate(EnemyPrefabList[2].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
+            if (i >= 40)
+            {
+                print("Wave: " + waveCounter + " - Spawning tier 4 enemy");
+                Instantiate(EnemyPrefabList[3].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
+            if (i >= 50)
+            {
+                print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
+                Instantiate(EnemyPrefabList[4].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
+
+
 
         }
         spawnQuantity += 2;
@@ -79,3 +103,22 @@ public class EnemySpawner : MonoBehaviour
 //wave 1: 10 t1 enemies, wave 2: 12 wave 3: 14, 16 18 wave 5 20t1 wave 6 22t1 and 2t2 24,4, 26,6 28,8 wave 10 30t1 10t2, wave 11 32,12,2
 //link each spawner to the camera and alwsy keep then just out of reach so you cant see the enemies spawn in 
 //wave counter, and teir counter that goes up every 5 waves
+// each wave the amount of tier 1 enemys goes up by 2 indefnitly starting at 10 at wave 1
+
+
+//     1  2  3
+//1   10  0  0
+//2   12  0
+//3   14  0
+//4   16  0
+//5   18  0
+//6   20  0
+//7   22  2
+//8   24  4
+//9   26  6
+//    28  8
+//    30  10
+//    32  12  2
+
+
+//    tier x 10
