@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         
-        InvokeRepeating("NextWave",1,15);
+        InvokeRepeating("NextWave",1,5);
     }
 
     // Update is called once per frame
@@ -59,27 +59,28 @@ public class EnemySpawner : MonoBehaviour
             float y = rnd.Next(0,5);
             Vector3 randVector = new Vector3(x, y, 0);
 
-            Instantiate(EnemyPrefabList[0].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
-            print("spawnQuantity" + spawnQuantity);
+            GameObject t1 = Instantiate(EnemyPrefabList[0].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            t1.name = "Tier 1 Enemy - " + i;
+            //print("spawnQuantity" + spawnQuantity);
 
             if (i >= 20)
             {
-                print("Wave: " + waveCounter + " - Spawning tier 2 enemy");
+                //print("Wave: " + waveCounter + " - Spawning tier 2 enemy");
                 Instantiate(EnemyPrefabList[1].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
             }
             if (i >= 30)
             {
-                print("Wave: " + waveCounter + " - Spawning tier 3 enemy");
+                //print("Wave: " + waveCounter + " - Spawning tier 3 enemy");
                 Instantiate(EnemyPrefabList[2].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
             }
             if (i >= 40)
             {
-                print("Wave: " + waveCounter + " - Spawning tier 4 enemy");
+                //print("Wave: " + waveCounter + " - Spawning tier 4 enemy");
                 Instantiate(EnemyPrefabList[3].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
             }
             if (i >= 50)
             {
-                print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
+                //print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
                 Instantiate(EnemyPrefabList[4].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
             }
 

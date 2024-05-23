@@ -19,6 +19,7 @@ public class Staff : MonoBehaviour
     void Start()
     {
         InvokeRepeating("AutoShoot",1,1);
+        InvokeRepeating("MeteorSpell", 1, 7);
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class Staff : MonoBehaviour
     {
 
 
-        MeteorSpell();
+        //MeteorSpell();
 
     }
 
@@ -60,6 +61,29 @@ public class Staff : MonoBehaviour
 
     void MeteorSpell()
     {
+
+        List<GameObject>MitHit = new List<GameObject>();
+        Collider2D[] Meteorhits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 11f, 8);
+        foreach(Collider2D hit in Meteorhits)
+        {
+            
+            if (hit.gameObject.tag == "Enemy")
+            {
+                MitHit.Add(hit.gameObject);
+            }
+        }
+
+
+        if (MitHit.Count > 0)
+        {
+            int randomIndex = Random.Range(0, MitHit.Count);
+            GameObject RandomHit = MitHit[randomIndex];
+            print(RandomHit.name + " randomHit");
+        }
+
+
+
+
         if (Input.GetMouseButtonDown(0))
         {
             // Convert mouse position to world position
