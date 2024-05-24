@@ -13,8 +13,7 @@ public class explosion : MonoBehaviour
         // Get all colliders within the explosion radius
         Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius);
 
-        // Gizmos.DrawWireSphere(transform.position, radius);
-        //print("Hits:" + colliders.Length);
+        
         
 
         // Apply damage to all objects within the explosion radius

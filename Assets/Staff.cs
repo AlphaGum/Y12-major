@@ -19,7 +19,7 @@ public class Staff : MonoBehaviour
     void Start()
     {
         InvokeRepeating("AutoShoot",1,1);
-        InvokeRepeating("MeteorSpell", 1, 7);
+        InvokeRepeating("MeteorSpell",1,7);
     }
 
     // Update is called once per frame
@@ -61,9 +61,11 @@ public class Staff : MonoBehaviour
 
     void MeteorSpell()
     {
-
+        //creates a list to f=sore the hits
         List<GameObject>MitHit = new List<GameObject>();
+        //uses an overlap circle to find every enmy within my range
         Collider2D[] Meteorhits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 11f, 8);
+        //each enemyhit by the overlap circle gets added to the mithit list
         foreach(Collider2D hit in Meteorhits)
         {
             
@@ -73,32 +75,24 @@ public class Staff : MonoBehaviour
             }
         }
 
-
+        //if there is an enemy in the list it chooses a random one to target
         if (MitHit.Count > 0)
         {
             int randomIndex = Random.Range(0, MitHit.Count);
             GameObject RandomHit = MitHit[randomIndex];
             print(RandomHit.name + " randomHit");
-        }
 
+            //converts the enemy position inot a world position
+            Vector3 EnemyPosition = RandomHit.transform.position;
+            //instantiates teh prefab at the enemy position
+            GameObject meteor = Instantiate(Bomb, new Vector3(transform.position.x, transform.position.y + 8, 0), Quaternion.identity);
 
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Convert mouse position to world position
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0; 
-
-            // Instantiate the prefab at the mouse position
-             GameObject meteor = Instantiate(Bomb, new Vector3(transform.position.x,transform.position.y+8,0), Quaternion.identity);
-
-            Vector3 MoveDirection = mousePosition - meteor.transform.position;
+            //this code dicates how fast the meteor moves towards the target
+            Vector3 MoveDirection = EnemyPosition - meteor.transform.position;
             MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
             MoveDirection = Vector3.Normalize(MoveDirection);
 
             meteor.GetComponent<Meteor>().Direction = MoveDirection;
-
         }
 
     }

@@ -188,5 +188,17 @@ public class CharacterScript : MonoBehaviour
     // when your weapon and corrosponding abilty both become max level you can choose to fuse them craeting a much stronger weapon
 
 
+    //on each level up i want to get a stat point that i can use to select any one of my abiltys (either the projectile or the meteor) and increase the stats of said abilty up to 10 times each
+    //the buffs will inrease the damage and every few levels add another projectile eaither another metoer or bullet
+    //on level up change scenes to a scene where the icons are located
+    //stats is a boolean
+    //when you leve up and getthe stat point it would pause the game and open up the level up menu, that menu would have all the icons on it,
+    //each abilty will have a level counter and show the current stats of the abilty and the next stats of the abilty
+    //once stat point is spend automaticly unpasue the game and upgrade the abilty 
+
+    //the damage and amount changes and cooldown speed 
+    //the dmage for the wand is in the projectile script
+    //the damage for the meteor is in the meteor script 
+    //the cooldown speed of both is in the staff script
     
 }
