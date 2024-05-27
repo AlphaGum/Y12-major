@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
-  Damage: 200
+  Damage: 100
 --- !u!1001 &8897366432301739610
 PrefabInstance:
   m_ObjectHideFlags: 0

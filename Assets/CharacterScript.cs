@@ -197,8 +197,16 @@ public class CharacterScript : MonoBehaviour
     //once stat point is spend automaticly unpasue the game and upgrade the abilty 
 
     //the damage and amount changes and cooldown speed 
-    //the dmage for the wand is in the projectile script
-    //the damage for the meteor is in the meteor script 
-    //the cooldown speed of both is in the staff script
-    
+
+    // wand damage      0: 50   1: 60   2:70    3:80    4:90    ect    
+    // Meteor damage    0: 100  1: 110  2: 120  3: 130  4: 150  ect
+    // Explosion dmage  0: 100  1: 110  2: 120  3: 130  4: 150  ect
+    // Wand CD          0: 1    1: 1    2: 0.9  3: 0.9  4: 0.8  ect
+    // Meteor CD        0: 5    1: 4.75 2: 4.50 3: 4.25 4: 4.00 ect 
+    // Wand Amount      0: 1    1: 1    2: 1    3: 2    4: 2    5: 2    6: 3    7: ect 
+    // Meteor Amount    0: 1    1: 1    2: 1    3: 1    4: 1    5: 2    6: 2    7: 2    8: 2    9: 2    10: 3
+
+    // wandDamage[characterScript.level]
+    // 
+
 }

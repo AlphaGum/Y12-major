@@ -8,6 +8,9 @@ public class explosion : MonoBehaviour
     public float radius = 5.0f; // explosion radius
     public float Damage; // damage amount
 
+    public List<float> DamageList = new List<float>() { 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200 };
+    public int level;
+
     void Start()
     {
         // Get all colliders within the explosion radius

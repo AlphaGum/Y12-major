@@ -7,6 +7,8 @@ public class Meteor : MonoBehaviour
     public float speed = 1.0f;
     public float Damage;
 
+    public List<float> DamageList = new List<float>() {100,110,120,130,140,150,160,170,180,190,200};
+
     public GameObject Explosion;
     public GameObject Temp;
     public Vector3 Direction;

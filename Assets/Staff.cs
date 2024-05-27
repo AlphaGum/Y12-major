@@ -15,11 +15,18 @@ public class Staff : MonoBehaviour
     public Transform LaunchOffset;
     public GameObject Enemy;
     public GameObject Bomb;
-    // Start is called before the first frame update
+
+    public List<float> WandCD = new List<float>() {1,1,0.9f,0.9f,0.8f,0.8f,0.7f,0.7f,0.6f,0.6f,0.5f};
+    public List<float> MeteorCD = new List<float>() {5,4.75f,4.5f,4.25f,4,3.75f,3.5f,3.25f,3,2.75f,2.5f};
+    public List<float> WandAmount = new List<float>() {1,1,1,2,2,2,3,3,3,4,5};
+    public List<float> MeteorAmount = new List<float>() {1,1,1,1,1,2,2,2,2,2,3 };
+
+    public CharacterScript characterScript;
+    
     void Start()
     {
         InvokeRepeating("AutoShoot",1,1);
-        InvokeRepeating("MeteorSpell",1,7);
+        InvokeRepeating("MeteorSpell",1,5);
     }
 
     // Update is called once per frame

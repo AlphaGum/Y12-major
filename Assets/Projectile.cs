@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     public float speed = 1.0f;
     public float Damage;
+    public List <float> DamageList = new List<float>() { 50,60,70,80,90,100,110,120,130,140,150};
 
     public Vector3 Direction;
     // Update is called once per frame
@@ -30,5 +31,13 @@ public class Projectile : MonoBehaviour
         
 
     }
+
+    void ProjectileDamage()
+    {
+        
+    }
+    
+
+    
     
 }
