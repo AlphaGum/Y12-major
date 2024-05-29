@@ -22,11 +22,13 @@ public class Staff : MonoBehaviour
     public List<float> MeteorAmount = new List<float>() {1,1,1,1,1,2,2,2,2,2,3 };
 
     public CharacterScript characterScript;
+    public int wandlevel;
+    public int Meteorlevel;
     
     void Start()
     {
-        InvokeRepeating("AutoShoot",1,1);
-        InvokeRepeating("MeteorSpell",1,5);
+        InvokeRepeating("AutoShoot", 1, WandCD[wandlevel]);
+        InvokeRepeating("MeteorSpell", 1, MeteorCD[Meteorlevel]);
     }
 
     // Update is called once per frame

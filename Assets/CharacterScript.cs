@@ -42,6 +42,10 @@ public class CharacterScript : MonoBehaviour
     public GameObject Buff2;
 
     public TextMeshProUGUI LevelText;
+    public Button Wand;
+    public Button Meteor;
+
+    public int LevelPoint;
 
     
 
@@ -163,7 +167,10 @@ public class CharacterScript : MonoBehaviour
         RequiredXP = CalculateRequiredXp();
         heal(100);
 
+        LevelPoint++;
         DisplayLevel();
+
+
     }
     private int CalculateRequiredXp()
     {
@@ -179,6 +186,13 @@ public class CharacterScript : MonoBehaviour
     {
         LevelText.text = level.ToString();
     }
+
+    public void UpgradeAbilty()
+    {
+       
+    }
+
+
 
 
 
