@@ -2043,7 +2043,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762047531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3745030382143010591}
+        m_TargetAssemblyTypeName: UiScript, Assembly-CSharp
+        m_MethodName: OnClickWandButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3745030382143010591}
+        m_TargetAssemblyTypeName: UiScript, Assembly-CSharp
+        m_MethodName: OnClickMeteorButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &762047531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3754,6 +3778,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1231391479}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1218122637112428084, guid: cb5dc57d6bcdb814691fdaaee088366c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3745030382143010591}
     - targetCorrespondingSourceObject: {fileID: 483393585568944830, guid: cb5dc57d6bcdb814691fdaaee088366c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3745030382143010587}
@@ -3892,6 +3919,24 @@ MonoBehaviour:
   characterScript: {fileID: 0}
   wandlevel: 0
   Meteorlevel: 0
+--- !u!1 &3745030382143010590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1218122637112428084, guid: cb5dc57d6bcdb814691fdaaee088366c, type: 3}
+  m_PrefabInstance: {fileID: 3745030382143010585}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3745030382143010591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745030382143010590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e7aa2f8066ba0b40913c64b44af0b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 3745030382143010589}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

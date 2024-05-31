@@ -45,7 +45,7 @@ public class CharacterScript : MonoBehaviour
     public Button Wand;
     public Button Meteor;
 
-    public int LevelPoint;
+    public int StatPoints;
 
     
 
@@ -167,7 +167,7 @@ public class CharacterScript : MonoBehaviour
         RequiredXP = CalculateRequiredXp();
         heal(100);
 
-        LevelPoint++;
+        StatPoints++;
         DisplayLevel();
 
 
