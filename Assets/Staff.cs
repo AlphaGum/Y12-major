@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -25,11 +26,17 @@ public class Staff : MonoBehaviour
     public CharacterScript characterScript;
     public int wandlevel;
     public int Meteorlevel;
-    
+    public int ExplosionLevel;
+
+    public TextMeshProUGUI Meteortext;
+    public TextMeshProUGUI WandText;
+
+
     void Start()
     {
         InvokeRepeating("AutoShoot", 1, WandCD[wandlevel]);
         InvokeRepeating("MeteorSpell", 1, MeteorCD[Meteorlevel]);
+        DisplayLevel();
     }
 
     // Update is called once per frame
@@ -51,17 +58,27 @@ public class Staff : MonoBehaviour
 
         // Start a new invocation with the new cooldown
         InvokeRepeating("AutoShoot", 1, WandCD[wandlevel]);
+        DisplayLevel();
+
+        print("Wand level" +  wandlevel);
+        print("wand CD" + WandCD[wandlevel]);
+        print("wand Amount" + WandAmount[wandlevel]);
+        
     }
     public void LevelUpMeteor()
     {
         // Increase the level of the wand
         Meteorlevel++;
+        ExplosionLevel++;
 
         // Cancel the current invocation of AutoShoot
         CancelInvoke("AutoShoot");
 
         // Start a new invocation with the new cooldown
         InvokeRepeating("AutoShoot", 1, MeteorCD[Meteorlevel]);
+        DisplayLevel();
+
+        print("meteor level" + Meteorlevel);
     }
 
     void AutoShoot()
@@ -90,6 +107,7 @@ public class Staff : MonoBehaviour
             MoveDirection = Vector3.Normalize(MoveDirection);
             //Finally, this line sets the Direction property of the Projectile component of the Bullet object to the calculated direction. This will likely be used to move the bullet towards the target.
             Bullet.GetComponent<Projectile>().Direction = MoveDirection;
+            Bullet.GetComponent<Projectile>().Wandlevel = wandlevel;
         }
     }
 
@@ -131,8 +149,19 @@ public class Staff : MonoBehaviour
                 MoveDirection = Vector3.Normalize(MoveDirection);
 
                 meteor.GetComponent<Meteor>().Direction = MoveDirection;
+                meteor.GetComponent<Meteor>().MeteorLevel = Meteorlevel;
+                meteor.GetComponent<Meteor>().ExplosionLevel = ExplosionLevel;
+
             }
         }
+
+    }
+
+    public void DisplayLevel()
+    {
+        WandText.text = wandlevel.ToString();
+        Meteortext.text = Meteorlevel.ToString();
+
 
     }
 }

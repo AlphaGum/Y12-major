@@ -46,8 +46,11 @@ public class CharacterScript : MonoBehaviour
     public Button Meteor;
 
     public int StatPoints;
+    public GameObject LevelupScreen;
 
-    
+
+
+
 
 
 
@@ -169,6 +172,8 @@ public class CharacterScript : MonoBehaviour
 
         StatPoints++;
         DisplayLevel();
+        LevelupScreen.SetActive(true);
+        Time.timeScale =0f;
 
 
     }
@@ -187,10 +192,7 @@ public class CharacterScript : MonoBehaviour
         LevelText.text = level.ToString();
     }
 
-    public void UpgradeAbilty()
-    {
-       
-    }
+    
 
 
 

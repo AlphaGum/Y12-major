@@ -7,11 +7,13 @@ public class Meteor : MonoBehaviour
     public float speed = 1.0f;
     public float Damage;
 
-    public List<float> DamageList = new List<float>() {100,110,120,130,140,150,160,170,180,190,200};
+    public List<float> MeteorDamage = new List<float>() {100,110,120,130,140,150,160,170,180,190,200};
 
     public GameObject Explosion;
     public GameObject Temp;
     public Vector3 Direction;
+    public int MeteorLevel;
+    public int ExplosionLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +33,10 @@ public class Meteor : MonoBehaviour
             
 
             EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
-            enemyScript.TakeDamage(Damage);
+            enemyScript.TakeDamage(MeteorDamage[MeteorLevel]);
 
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
+            explosion.GetComponent<explosion>().ExplosionLevel = ExplosionLevel;
             
             Destroy(gameObject);
         }

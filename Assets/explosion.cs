@@ -8,8 +8,9 @@ public class explosion : MonoBehaviour
     public float radius = 5.0f; // explosion radius
     public float Damage; // damage amount
 
-    public List<float> DamageList = new List<float>() { 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200 };
-    public int level;
+    public List<float> ExplosionDamage = new List<float>() { 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200 };
+    public int ExplosionLevel;
+
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class explosion : MonoBehaviour
                 //print("better expolsion part 2: " + hit.name);
                 //print($"{Damage} explosion");
                 EnemyScript enemyScript = hit.gameObject.GetComponent<EnemyScript>();
-                enemyScript.TakeDamage(Damage);
+                enemyScript.TakeDamage(ExplosionDamage[ExplosionLevel]);
             }
             
             
