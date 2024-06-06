@@ -23,6 +23,8 @@ public class Staff : MonoBehaviour
     public List<float> WandAmount = new List<float>() {1,1,1,2,2,2,3,3,3,4,5};
     public List<float> MeteorAmount = new List<float>() {1,1,1,1,1,2,2,2,2,2,3};
     public float lastShootTime = 0f;
+    public float firstShootTime = 0f;
+    public float projectilesShot = 0;
 
     public CharacterScript characterScript;
     public int wandlevel;
@@ -110,15 +112,16 @@ public class Staff : MonoBehaviour
 
     private void AutoShoot()
     {
-        if (Time.time > lastShootTime + WandCD[wandlevel])
+        // Shoot every 0.1 seconds
+        if (Time.time > lastShootTime + 0.1f)
         {
-            lastShootTime = Time.time;
             float numProjectilesW = WandAmount[wandlevel]; // Number of projectiles to shoot
+            lastShootTime = Time.time;
 
-
-            // Try a time.time based method to delay these ones
-            for (int i = 0; i < numProjectilesW; i++)
+            // Shoot if there are more projectiles left to shoot
+            if (projectilesShot < numProjectilesW)
             {
+
                 List<float> Distances = new List<float>();
 
                 // Detect all colliders within a circle of radius 11 units around the current object's position
@@ -131,27 +134,38 @@ public class Staff : MonoBehaviour
                 }
 
                 // Find the closest detected object
-                float min = Distances.Min();
-                Collider2D Target = hits[Distances.IndexOf(min)];
+                if(Distances.Count > 0)
+                {
+                    float min = Distances.Min();
+                    Collider2D Target = hits[Distances.IndexOf(min)];
 
-                // Create a new instance of the Projectile game object at the position of LaunchOffset
-                GameObject Bullet = Instantiate(Projectile, LaunchOffset.position, Quaternion.identity);
+                    // Create a new instance of the Projectile game object at the position of LaunchOffset
+                    GameObject Bullet = Instantiate(Projectile, LaunchOffset.position, Quaternion.identity);
 
-                // Calculate the direction to the target and normalize it
-                Vector3 MoveDirection = Target.gameObject.transform.position - transform.position;
-                MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
-                MoveDirection = Vector3.Normalize(MoveDirection);
+                    // Calculate the direction to the target and normalize it
+                    Vector3 MoveDirection = Target.gameObject.transform.position - transform.position;
+                    MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
+                    MoveDirection = Vector3.Normalize(MoveDirection);
 
-                // Set the direction and wand level of the projectile
-                Bullet.GetComponent<Projectile>().Direction = MoveDirection;
-                Bullet.GetComponent<Projectile>().Wandlevel = wandlevel;
+                    // Set the direction and wand level of the projectile
+                    Bullet.GetComponent<Projectile>().Direction = MoveDirection;
+                    Bullet.GetComponent<Projectile>().Wandlevel = wandlevel;
 
-                // Introduce a slight delay before spawning the next projectile
-                //yield return new WaitForSeconds(0.1f); // Adjust the delay time as needed
+                    // Keep track of how many shot
+                    projectilesShot++;
+                    print("Shooting projectile: " + numProjectilesW);
+                    
+                }
+                
             }
+        }
 
-            // Wait for the cooldown period before the next round of shooting
-            //yield return new WaitForSeconds(WandCD[wandlevel]);
+        // Reset everything for the next round of shooting
+        if (Time.time > firstShootTime + WandCD[wandlevel])
+        {
+            print("Time for next round of shooting");
+            projectilesShot = 0;
+            firstShootTime = Time.time;
         }
     }
 
@@ -161,14 +175,13 @@ public class Staff : MonoBehaviour
 
         for (int i = 0; i < numProjectilesM; i++)
         {
-            //creates a list to f=sore the hits
+            //creates a list to store the hits
             List<GameObject> MitHit = new List<GameObject>();
             //uses an overlap circle to find every enmy within my range
             Collider2D[] Meteorhits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 11f, 8);
             //each enemyhit by the overlap circle gets added to the mithit list
             foreach (Collider2D hit in Meteorhits)
             {
-
                 if (hit.gameObject.tag == "Enemy")
                 {
                     MitHit.Add(hit.gameObject);
@@ -180,7 +193,7 @@ public class Staff : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, MitHit.Count);
                 GameObject RandomHit = MitHit[randomIndex];
-                print(RandomHit.name + " randomHit");
+                //print(RandomHit.name + " randomHit");
 
                 //converts the enemy position inot a world position
                 Vector3 EnemyPosition = RandomHit.transform.position;

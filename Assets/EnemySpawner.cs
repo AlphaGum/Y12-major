@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
     private void NextWave()
     {
         waveCounter++;
-        print("waveCounter" + waveCounter);
+        //print("waveCounter" + waveCounter);
 
         int tier = waveCounter / 5;
 
