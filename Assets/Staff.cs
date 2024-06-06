@@ -21,7 +21,8 @@ public class Staff : MonoBehaviour
     public List<float> WandCD = new List<float>() {1,1,0.9f,0.9f,0.8f,0.8f,0.7f,0.7f,0.6f,0.6f,0.5f};
     public List<float> MeteorCD = new List<float>() {5,4.75f,4.5f,4.25f,4,3.75f,3.5f,3.25f,3,2.75f,2.5f};
     public List<float> WandAmount = new List<float>() {1,1,1,2,2,2,3,3,3,4,5};
-    public List<float> MeteorAmount = new List<float>() {1,1,1,1,1,2,2,2,2,2,3 };
+    public List<float> MeteorAmount = new List<float>() {1,1,1,1,1,2,2,2,2,2,3};
+    public float lastShootTime = 0f;
 
     public CharacterScript characterScript;
     public int wandlevel;
@@ -34,7 +35,8 @@ public class Staff : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("AutoShoot", 1, WandCD[wandlevel]);
+        //InvokeRepeating("AutoShoot", 1, WandCD[wandlevel]);
+        //StartCoroutine(AutoShoot());
         InvokeRepeating("MeteorSpell", 1, MeteorCD[Meteorlevel]);
         DisplayLevel();
     }
@@ -42,10 +44,7 @@ public class Staff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-       
-
+        AutoShoot(); 
     }
 
     public void LevelUpWand()
@@ -54,15 +53,13 @@ public class Staff : MonoBehaviour
         wandlevel++;
 
         // Cancel the current invocation of AutoShoot
-        CancelInvoke("AutoShoot");
+        //CancelInvoke("AutoShoot");
+
+        //StartCoroutine(AutoShoot());
 
         // Start a new invocation with the new cooldown
-        InvokeRepeating("AutoShoot", 1, WandCD[wandlevel]);
+        //InvokeRepeating("AutoShoot", 1, WandCD[wandlevel]);
         DisplayLevel();
-
-        print("Wand level" +  wandlevel);
-        print("wand CD" + WandCD[wandlevel]);
-        print("wand Amount" + WandAmount[wandlevel]);
         
     }
     public void LevelUpMeteor()
@@ -81,33 +78,80 @@ public class Staff : MonoBehaviour
         print("meteor level" + Meteorlevel);
     }
 
-    void AutoShoot()
-    {
-        float numProjectilesW = WandAmount[wandlevel];
+    //void AutoShoot()
+    //{
+    //    float numProjectilesW = WandAmount[wandlevel];
 
-        for (int i = 0; i < numProjectilesW; i++)
+    //    for (int i = 0; i < numProjectilesW; i++)
+    //    {
+    //        List<float> Distances = new List<float>();
+    //        //This line uses the Physics2D.OverlapCircleAll() method to detect all colliders within a circle of radius 11 units around the current object's position. The detected colliders are stored in an array called hits.
+    //        Collider2D[] hits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 11f, 8);
+    //        //This loop goes through each collider in the hits array and calculates the distance from the current object to the collider. It then adds this distance to the Distances list.
+    //        foreach (Collider2D hit in hits)
+    //        {
+    //            Distances.Add(Vector2.Distance(transform.position, hit.transform.position));
+    //        }
+    //        //This line finds the smallest value in the Distances list, which represents the closest detected object.
+    //        float min = Distances.Min();
+    //        //This line assigns the closest collider to a variable called Target.
+    //        Collider2D Target = (hits[Distances.IndexOf(min)]);
+    //        //This line creates a new instance of the Projectile game object at the position of LaunchOffset.
+    //        GameObject Bullet = Instantiate(Projectile, LaunchOffset.position, Quaternion.identity);
+    //        //These lines calculate the direction from the current object to the Target object. The direction is then normalized, which means it's converted to a unit vector (a vector of length 1).
+    //        Vector3 MoveDirection = Target.gameObject.transform.position - transform.position;
+    //        MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
+    //        MoveDirection = Vector3.Normalize(MoveDirection);
+    //        //Finally, this line sets the Direction property of the Projectile component of the Bullet object to the calculated direction. This will likely be used to move the bullet towards the target.
+    //        Bullet.GetComponent<Projectile>().Direction = MoveDirection;
+    //        Bullet.GetComponent<Projectile>().Wandlevel = wandlevel;
+    //    }
+    //}
+
+    private void AutoShoot()
+    {
+        if (Time.time > lastShootTime + WandCD[wandlevel])
         {
-            List<float> Distances = new List<float>();
-            //This line uses the Physics2D.OverlapCircleAll() method to detect all colliders within a circle of radius 11 units around the current object's position. The detected colliders are stored in an array called hits.
-            Collider2D[] hits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 11f, 8);
-            //This loop goes through each collider in the hits array and calculates the distance from the current object to the collider. It then adds this distance to the Distances list.
-            foreach (Collider2D hit in hits)
+            lastShootTime = Time.time;
+            float numProjectilesW = WandAmount[wandlevel]; // Number of projectiles to shoot
+
+
+            // Try a time.time based method to delay these ones
+            for (int i = 0; i < numProjectilesW; i++)
             {
-                Distances.Add(Vector2.Distance(transform.position, hit.transform.position));
+                List<float> Distances = new List<float>();
+
+                // Detect all colliders within a circle of radius 11 units around the current object's position
+                Collider2D[] hits = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), 11f, 8);
+
+                // Calculate the distance to each detected collider and store it in the Distances list
+                foreach (Collider2D hit in hits)
+                {
+                    Distances.Add(Vector2.Distance(transform.position, hit.transform.position));
+                }
+
+                // Find the closest detected object
+                float min = Distances.Min();
+                Collider2D Target = hits[Distances.IndexOf(min)];
+
+                // Create a new instance of the Projectile game object at the position of LaunchOffset
+                GameObject Bullet = Instantiate(Projectile, LaunchOffset.position, Quaternion.identity);
+
+                // Calculate the direction to the target and normalize it
+                Vector3 MoveDirection = Target.gameObject.transform.position - transform.position;
+                MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
+                MoveDirection = Vector3.Normalize(MoveDirection);
+
+                // Set the direction and wand level of the projectile
+                Bullet.GetComponent<Projectile>().Direction = MoveDirection;
+                Bullet.GetComponent<Projectile>().Wandlevel = wandlevel;
+
+                // Introduce a slight delay before spawning the next projectile
+                //yield return new WaitForSeconds(0.1f); // Adjust the delay time as needed
             }
-            //This line finds the smallest value in the Distances list, which represents the closest detected object.
-            float min = Distances.Min();
-            //This line assigns the closest collider to a variable called Target.
-            Collider2D Target = (hits[Distances.IndexOf(min)]);
-            //This line creates a new instance of the Projectile game object at the position of LaunchOffset.
-            GameObject Bullet = Instantiate(Projectile, LaunchOffset.position, Quaternion.identity);
-            //These lines calculate the direction from the current object to the Target object. The direction is then normalized, which means it's converted to a unit vector (a vector of length 1).
-            Vector3 MoveDirection = Target.gameObject.transform.position - transform.position;
-            MoveDirection = new Vector3(MoveDirection.x, MoveDirection.y, 0);
-            MoveDirection = Vector3.Normalize(MoveDirection);
-            //Finally, this line sets the Direction property of the Projectile component of the Bullet object to the calculated direction. This will likely be used to move the bullet towards the target.
-            Bullet.GetComponent<Projectile>().Direction = MoveDirection;
-            Bullet.GetComponent<Projectile>().Wandlevel = wandlevel;
+
+            // Wait for the cooldown period before the next round of shooting
+            //yield return new WaitForSeconds(WandCD[wandlevel]);
         }
     }
 
