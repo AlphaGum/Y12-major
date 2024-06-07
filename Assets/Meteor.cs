@@ -7,7 +7,7 @@ public class Meteor : MonoBehaviour
     public float speed = 1.0f;
     public float Damage;
 
-    public List<float> MeteorDamage = new List<float>() {100,110,120,130,140,150,160,170,180,190,200};
+    public List<float> MeteorDamage = new List<float>() { 40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, };
 
     public GameObject Explosion;
     public GameObject Temp;
@@ -37,7 +37,7 @@ public class Meteor : MonoBehaviour
 
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
             explosion.GetComponent<explosion>().ExplosionLevel = ExplosionLevel;
-            
+            print("meteordamage" + MeteorDamage[MeteorLevel]);
             Destroy(gameObject);
         }
 

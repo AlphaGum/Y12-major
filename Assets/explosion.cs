@@ -8,7 +8,7 @@ public class explosion : MonoBehaviour
     public float radius = 5.0f; // explosion radius
     public float Damage; // damage amount
 
-    public List<float> ExplosionDamage = new List<float>() { 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200 };
+    public List<float> ExplosionDamage = new List<float>() { 40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, };
     public int ExplosionLevel;
 
 

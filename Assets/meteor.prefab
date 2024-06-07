@@ -165,7 +165,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  Damage: 100
+  Damage: 0
+  MeteorDamage:
+  - 40
+  - 45
+  - 50
+  - 55
+  - 65
+  - 70
+  - 80
+  - 90
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
   Explosion: {fileID: 7515198290691955605, guid: fcf67d809bbfcda4e84a44e4ec52c68f, type: 3}
   Temp: {fileID: 5967667635583697365, guid: 15b4fa678451e7b4b9224e87279ba84a, type: 3}
   Direction: {x: 0, y: 0, z: 0}
+  MeteorLevel: 0
+  ExplosionLevel: 0

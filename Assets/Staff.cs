@@ -18,10 +18,10 @@ public class Staff : MonoBehaviour
     public GameObject Enemy;
     public GameObject Bomb;
 
-    public List<float> WandCD = new List<float>() {1,1,0.9f,0.9f,0.8f,0.8f,0.7f,0.7f,0.6f,0.6f,0.5f};
-    public List<float> MeteorCD = new List<float>() {5,4.75f,4.5f,4.25f,4,3.75f,3.5f,3.25f,3,2.75f,2.5f};
-    public List<float> WandAmount = new List<float>() {1,1,1,2,2,2,3,3,3,4,5};
-    public List<float> MeteorAmount = new List<float>() {1,1,1,1,1,2,2,2,2,2,3};
+    public List<float> WandCD = new List<float>() {1,1,0.9f,0.9f,0.8f,0.8f,0.7f,0.7f,0.6f,0.6f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,0.5f,};
+    public List<float> MeteorCD = new List<float>() {5,4.75f,4.5f,4.25f,4,3.75f,3.5f,3.25f,3,2.75f,2.5f, 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f , 2.5f ,};
+    public List<float> WandAmount = new List<float>() {1,1,1,2,2,2,3,3,3,4,5, 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 , 5 ,};
+    public List<float> MeteorAmount = new List<float>() {1,1,1,1,1,2,2,2,2,2,3, 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 , 3 };
     public float lastShootTime = 0f;
     public float firstShootTime = 0f;
     public float projectilesShot = 0;
@@ -153,7 +153,7 @@ public class Staff : MonoBehaviour
 
                     // Keep track of how many shot
                     projectilesShot++;
-                    print("Shooting projectile: " + numProjectilesW);
+                    
                     
                 }
                 
@@ -163,7 +163,7 @@ public class Staff : MonoBehaviour
         // Reset everything for the next round of shooting
         if (Time.time > firstShootTime + WandCD[wandlevel])
         {
-            print("Time for next round of shooting");
+            
             projectilesShot = 0;
             firstShootTime = Time.time;
         }

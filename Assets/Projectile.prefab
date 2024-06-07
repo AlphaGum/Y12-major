@@ -221,4 +221,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   Damage: 50
+  WandDamage:
+  - 40
+  - 45
+  - 50
+  - 55
+  - 60
+  - 65
+  - 70
+  - 75
+  - 80
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  - 85
+  Wandlevel: 0
   Direction: {x: 0, y: 0, z: 0}

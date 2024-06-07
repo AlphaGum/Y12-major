@@ -101,7 +101,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
-  Damage: 100
+  Damage: 0
+  ExplosionDamage:
+  - 40
+  - 45
+  - 50
+  - 55
+  - 60
+  - 65
+  - 70
+  - 80
+  - 90
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  - 100
+  ExplosionLevel: 0
 --- !u!1001 &8897366432301739610
 PrefabInstance:
   m_ObjectHideFlags: 0
