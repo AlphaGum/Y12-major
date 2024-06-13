@@ -53,7 +53,7 @@ public class CharacterScript : MonoBehaviour
 
 
 
-
+    //handles the character colliding with the enmemy 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -67,10 +67,11 @@ public class CharacterScript : MonoBehaviour
 
     void Start()
     {
+        //spawns the health and xp bars 
         frontXpBarNumber = currentXP / RequiredXP;
         backXpBarNumber = currentXP / RequiredXP;
         RequiredXP = CalculateRequiredXp();
-
+        //changes the health on the slider 
         Vector3 StartVector = new Vector3(0,1,1);
         healthSlider.transform.localScale = StartVector;
 
@@ -81,17 +82,7 @@ public class CharacterScript : MonoBehaviour
     void Update()
     {
         movement();
-        
-
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            takedamage(20);
-        }
-
-        UpdateXpUI();
-        if (Input.GetKeyDown(KeyCode.Equals))
-            GainExperinceFlatRate(20);
-
+        //activates the levl up code 
         if (currentXP > RequiredXP)
         {
             LevelUp();
@@ -100,24 +91,27 @@ public class CharacterScript : MonoBehaviour
         
 
     }
-
     public void movement()
     {
+        // This method handles player movement
+
         moveinput.x = Input.GetAxisRaw("Horizontal");
         moveinput.y = Input.GetAxisRaw("Vertical");
-
+        //ensures the speed to not vary
         moveinput.Normalize();
 
         rb2d.velocity = moveinput * moveSpeed;
     }
     private void healthbarupdate()
     {
+        // This method updates the health bar UI
         float NewScale = 1 - healthBarNumber;
         Vector3 NewScaleVector = new Vector3(NewScale, 1, 1);
         healthSlider.transform.localScale = NewScaleVector;
     }
     public void takedamage(float damage)
     {
+        // This method handles taking damage
         HealthAmount -= damage;
         healthBarNumber = HealthAmount / 100;
         healthbarupdate();
@@ -129,6 +123,7 @@ public class CharacterScript : MonoBehaviour
     }
     public void heal(float healingAmount)
     {
+        // This method handles healing
         HealthAmount += healingAmount;
         HealthAmount = Mathf.Clamp(HealthAmount, 0, 100);
         healthBarNumber = HealthAmount / 100;
@@ -136,33 +131,40 @@ public class CharacterScript : MonoBehaviour
     }
     public void UpdateXpUI()
     {
+        // This method updates the XP UI
+        // Calculate the fraction of current XP relative to the required XP
         float xpFraction = currentXP / RequiredXP;
         float FXP = frontXpBarNumber;
-        if(FXP < xpFraction)
+        // Check if the front XP bar needs to be updated
+        if (FXP < xpFraction)
         {
             delaytimer += Time.deltaTime;
             backXpBarNumber = xpFraction;
             if(delaytimer > 1.5)
             {
                 lerptimer += Time.deltaTime;
+                // Calculate the percentage of completion for the lerp (linear interpolation)
                 float percentComplete = lerptimer / 4;
-                // TODO: change fill amount to scale, and invert the number
+                // Smoothly transition the front XP bar towards the back XP bar
                 frontXpBarNumber = Mathf.Lerp(FXP,backXpBarNumber, percentComplete);
 
             }
 
         }
+        // Calculate the new scale for the XP slider based on the front XP bar value
         float NewScale = 1 - frontXpBarNumber;
         Vector3 NewScaleVector = new Vector3(NewScale,1,1);
         XpSlider.transform.localScale = NewScaleVector;
     }
     public void GainExperinceFlatRate(float xpGained)
     {
+        // This method handles gaining experience points
         currentXP += xpGained;
         lerptimer = 0f;
     }
     public void LevelUp()
     {
+        // This method handles leveling up
         level++;
         frontXpBarNumber = 0f;
         backXpBarNumber = 0f;
@@ -179,9 +181,14 @@ public class CharacterScript : MonoBehaviour
     }
     private int CalculateRequiredXp()
     {
+        // This method calculates the required XP for the next level
+
+        // Initialize a variable to store the calculated XP
         int solveforRequiredXp = 0;
+        // Loop through each level from 1 to the current level
         for (int LevelCycle = 1; LevelCycle <= level; LevelCycle++)
         {
+            // Calculate the XP required for the current level and add it to the total
             solveforRequiredXp += (int)Mathf.Floor(LevelCycle + AdditionMultiplyer * Mathf.Pow(PowerMultiplyer, LevelCycle / DivisionMultiplyer));
         }
         return solveforRequiredXp / 4;
@@ -189,6 +196,7 @@ public class CharacterScript : MonoBehaviour
 
     public void DisplayLevel()
     {
+        // This method displays the current level
         LevelText.text = level.ToString();
     }
 
