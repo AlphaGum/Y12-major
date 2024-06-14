@@ -27931,7 +27931,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988763365}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
@@ -27951,7 +27951,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988763365}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
@@ -62938,9 +62938,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1454205896}
     - target: {fileID: 4048795042003907157, guid: cb5dc57d6bcdb814691fdaaee088366c, type: 3}
+      propertyPath: backXpBar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048795042003907157, guid: cb5dc57d6bcdb814691fdaaee088366c, type: 3}
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 7420201869111596012, guid: f3a3fe6f1b2188d46829eec9b27ed110, type: 3}
+    - target: {fileID: 4048795042003907157, guid: cb5dc57d6bcdb814691fdaaee088366c, type: 3}
+      propertyPath: frontXpBar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4048795042003907157, guid: cb5dc57d6bcdb814691fdaaee088366c, type: 3}
       propertyPath: LaunchOffset
       value: 

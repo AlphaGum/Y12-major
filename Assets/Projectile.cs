@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
             
             EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
             enemyScript.TakeDamage(WandDamage[Wandlevel]);
-            print("wand damage" + WandDamage[Wandlevel]);
+          
             Destroy(gameObject);
         }
         

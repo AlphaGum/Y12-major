@@ -37,7 +37,7 @@ public class Meteor : MonoBehaviour
 
             GameObject explosion = Instantiate(Explosion, transform.position, Quaternion.identity);
             explosion.GetComponent<explosion>().ExplosionLevel = ExplosionLevel;
-            print("meteordamage" + MeteorDamage[MeteorLevel]);
+            
             Destroy(gameObject);
         }
 

@@ -88,7 +88,10 @@ public class CharacterScript : MonoBehaviour
             LevelUp();
         }
 
-        
+        UpdateXpUI();
+
+
+
 
     }
     public void movement()
@@ -131,6 +134,7 @@ public class CharacterScript : MonoBehaviour
     }
     public void UpdateXpUI()
     {
+        
         // This method updates the XP UI
         // Calculate the fraction of current XP relative to the required XP
         float xpFraction = currentXP / RequiredXP;
@@ -148,6 +152,7 @@ public class CharacterScript : MonoBehaviour
                 // Smoothly transition the front XP bar towards the back XP bar
                 frontXpBarNumber = Mathf.Lerp(FXP,backXpBarNumber, percentComplete);
 
+
             }
 
         }
@@ -158,6 +163,7 @@ public class CharacterScript : MonoBehaviour
     }
     public void GainExperinceFlatRate(float xpGained)
     {
+        
         // This method handles gaining experience points
         currentXP += xpGained;
         lerptimer = 0f;
