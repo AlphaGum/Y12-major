@@ -55,6 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < spawnQuantity; i++)
         {
+            //spawns differnt tier enemys at differnt wave levels that slowly increases each wave
             float x = rnd.Next(0,5);
             float y = rnd.Next(0,5);
             Vector3 randVector = new Vector3(x, y, 0);
@@ -83,7 +84,26 @@ public class EnemySpawner : MonoBehaviour
                 //print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
                 Instantiate(EnemyPrefabList[4].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
             }
-
+            if (i >= 60)
+            {
+                //print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
+                Instantiate(EnemyPrefabList[4].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
+            if (i >= 70)
+            {
+                //print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
+                Instantiate(EnemyPrefabList[4].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
+            if (i >= 80)
+            {
+                //print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
+                Instantiate(EnemyPrefabList[4].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
+            if (i >= 90)
+            {
+                //print("Wave: " + waveCounter + " - Spawning tier 5 enemy");
+                Instantiate(EnemyPrefabList[4].gameObject, SpawnPoint[tier].transform.position + randVector, Quaternion.identity);
+            }
 
 
         }

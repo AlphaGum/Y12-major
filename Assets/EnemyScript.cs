@@ -23,12 +23,14 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        //finds the player on the map
         PlayerLocation = GameObject.Find("player").GetComponent<Transform>();
         characterScript = PlayerLocation.GetComponent<CharacterScript>();
     }
 
     void Update()
     {
+        //moves towards the player constantly
         if(PlayerLocation != null)
         {
             Vector3 MoveDirection = PlayerLocation.position - transform.position;
@@ -41,6 +43,7 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //damages the player on collions
         if (collision.gameObject.tag == "Player")
         {
             characterScript.takedamage(damage);
@@ -49,6 +52,7 @@ public class EnemyScript : MonoBehaviour
 
     public void TakeDamage(float damage1)
     {
+        //takes damage on on 0 hp dies
         Hp -= damage1;
         if (Hp <= 0)
         {
@@ -59,6 +63,7 @@ public class EnemyScript : MonoBehaviour
 
     public void DropXP()
     {
+        //spawns xp on death
         Instantiate(XPball, transform.position,Quaternion.identity);
     }
 

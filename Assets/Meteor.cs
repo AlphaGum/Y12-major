@@ -23,6 +23,7 @@ public class Meteor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //the path and speed the metoers spawns and move to
         transform.position += Direction * Time.deltaTime * speed;
     }
 
@@ -30,7 +31,7 @@ public class Meteor : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag == "Enemy")
         {
-            
+            //the collions for the meteor and the creation of the explosion
 
             EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
             enemyScript.TakeDamage(MeteorDamage[MeteorLevel]);

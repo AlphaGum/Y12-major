@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //the collions for the projectiles
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag == "Enemy")
         {
             

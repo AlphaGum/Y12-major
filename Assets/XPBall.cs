@@ -24,7 +24,7 @@ public class XPBall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+       //adds exp to the character on pickup/contact
         if (collision.gameObject.tag == "Player")
         {
             CharacterScript characterScript = collision.gameObject.GetComponent<CharacterScript>();
