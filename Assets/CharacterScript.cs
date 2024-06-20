@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class CharacterScript : MonoBehaviour
 {
+    //refrences 
     public float moveSpeed;
     public Rigidbody2D rb2d;
     private Vector2 moveinput;
